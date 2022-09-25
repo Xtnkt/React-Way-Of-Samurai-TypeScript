@@ -1,14 +1,11 @@
 .nav {
     grid-area: n;
     background-color: blue;
-    padding-left: 50px;
+    padding: 20px;
+    text-align: center
 }
 
-.item {
-    color: white;
-    padding-top: 5px;
-}
-
-.active {
-    color:goldenrod;
+.button {
+    width: 90px;
+    margin-top: 5px;
 }
