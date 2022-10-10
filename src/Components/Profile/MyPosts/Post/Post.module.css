@@ -2,8 +2,13 @@
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    margin-right: 10px;
 }
 .post{
-    color: white;
+    color: black;
     padding-left: 10px;
+}
+
+.likes{
+    margin-bottom: 10px;
 }

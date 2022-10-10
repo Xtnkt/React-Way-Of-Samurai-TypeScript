@@ -11,8 +11,8 @@ export const Post:React.FC<PostType> = (props:PostType) => {
         <div className={s.post}>
             <img src='https://skesov.ru/wp-content/uploads/2018/04/post_5ade3f348ee95.jpeg'/>
             {props.message}
-            <div>
-                <span>{props.likesCount} likes</span>
+            <div className={s.likes}>
+                <span >{props.likesCount} likes</span>
             </div>
         </div>
     )

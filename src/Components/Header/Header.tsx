@@ -4,7 +4,11 @@ import s from './Header.module.css';
 export const Header = (props: any) => {
     return (
         <div className={s.header}>
-            <img src={"https://www.freepnglogos.com/uploads/telegram-logo-png-0.png"} alt={'telegram'}/>
+            <img src='https://c.tenor.com/LoYLZWgZo5cAAAAC/pokemon-magikarp.gif'
+                 alt='fish logo'/>
+            <div className={s.siteName}>
+                Fish Place
+            </div>
         </div>
     )
 }

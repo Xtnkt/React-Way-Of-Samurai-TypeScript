@@ -1,3 +1,7 @@
 .descriptionBlock{
     padding: 10px;
 }
+.img {
+    max-width: 1266px;
+    height: auto;
+}

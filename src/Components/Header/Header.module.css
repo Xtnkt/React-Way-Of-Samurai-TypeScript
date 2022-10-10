@@ -1,9 +1,19 @@
 .header {
     grid-area: h;
-    background-color: green;
+    background-color: rgba(6, 127, 247, 0.848);
+    display: grid;
+    grid-template-columns: 2fr 10fr;
 }
 .header img {
-    width: 50px;
     display: block;
-    margin: 5px;
+    margin: 5px 0px 0px 85px;
+    width: 70px;
+    border-radius: 20px;
+
+}
+.siteName {
+    text-align: center;
+    padding: 5px;
+    font-size: 30px;
+    color: white;
 }

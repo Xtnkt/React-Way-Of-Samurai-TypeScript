@@ -1,11 +1,12 @@
 .nav {
     grid-area: n;
-    background-color: blue;
+    background-color: rgba(198, 141, 54, 0.979);
     padding: 20px;
-    text-align: center
+    text-align: center;
 }
 
 .button {
     width: 90px;
     margin-top: 5px;
+    vertical-align: center;
 }
