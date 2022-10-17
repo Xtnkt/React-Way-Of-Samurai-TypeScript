@@ -12,22 +12,36 @@ import {RootStateType} from "./redux/state";
 
 
 type AppPropsType = {
-    state:RootStateType,
+    state: RootStateType,
+    addPost: () => void,
+    updateNewPostText: (newText: string) => void,
+    updateNewMessageText: (newMessage: string) => void,
+    addMessage: () => void
 }
 
-export const App:React.FC<AppPropsType> = (props) => {
+export const App: React.FC<AppPropsType> = (props) => {
     return (
-            <div className='app_wrapper'>
-                <Header/>
-                <Navbar/>
-                <div className='app_wrapper_content'>
-                    <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage} />}/>
-                    <Route path="/dialogs" render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
-                    <Route path="/news" render={() => <News/>}/>
-                    <Route path="/music" render={() => <Music/>}/>
-                    <Route path="/settings" render={() => <Settings/>}/>
-                </div>
+        <div className='app_wrapper'>
+            <Header/>
+            <Navbar/>
+            <div className='app_wrapper_content'>
+                <Route path="/profile" render={() =>
+                    <Profile profilePage={props.state.profilePage}
+                             addPost={props.addPost}
+                             updateNewPostText={props.updateNewPostText}
+                    />
+                }/>
+                <Route path="/dialogs" render={() =>
+                    <Dialogs dialogsPage={props.state.dialogsPage}
+                             updateNewMessageText={props.updateNewMessageText}
+                             addMessage={props.addMessage}
+                    />
+                }/>
+                <Route path="/news" render={() => <News/>}/>
+                <Route path="/music" render={() => <Music/>}/>
+                <Route path="/settings" render={() => <Settings/>}/>
             </div>
+        </div>
     )
 }
 
