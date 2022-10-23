@@ -11,3 +11,38 @@
     margin-top: 5px;
     vertical-align: center;
 }
+
+.container img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #55c5e9; /* Рамка вокруг фотографии */
+    border-radius: 30px;
+    padding: 5px; /* Расстояние от картинки до рамки */
+    margin-right: 10px; /* Отступ справа */
+    margin-bottom: 5px; /* Отступ снизу */
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item b {
+    font-size: 15px;
+    color: #55c5e9;
+    margin-right: 10px;
+}
+
+.button_friends {
+    width: 90px;
+    margin-top: 50%;
+    vertical-align: center;
+}

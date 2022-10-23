@@ -3,39 +3,19 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from 'antd';
 import 'antd/dist/antd.css';
+import {FriendsDataType} from "../../redux/state";
 
 type ButtonsPropsType = {
     id: number;
 }
 
-const Buttons = (props: ButtonsPropsType) => {
-    if (props.id === 1) {
-        return (
-            <Button className={s.button} type="primary">Profile</Button>
-        )
-    } else if (props.id === 2) {
-        return (
-            <Button className={s.button} type="primary">Dialogs</Button>
-        )
-    } else if (props.id === 3) {
-        return (
-            <Button className={s.button} type="primary">News</Button>
-        )
-    } else if (props.id === 4) {
-        return (
-            <Button className={s.button} type="primary">Music</Button>
-        )
-    } else if (props.id === 5) {
-        return (
-            <Button className={s.button} type="primary">Settings</Button>
-        )
-    } else {
-        return <div></div>
-    }
-}
-
-
 export const Navbar = (props: any) => {
+
+    const friendsDataElements = props.friendsData.map((f: FriendsDataType) =>
+        <div key={f.id} className={s.item}>
+            <img src={f.img}/>
+            <b>{f.name}</b>
+        </div>)
 
     return (
         <div className={s.nav}>
@@ -64,6 +44,43 @@ export const Navbar = (props: any) => {
                     <Buttons id={5}/>
                 </NavLink>
             </div>
+            <div>
+                <NavLink to="/friends">
+                    <Buttons id={6}/>
+                </NavLink>
+            </div>
+            <div className={s.container}>
+                {friendsDataElements}
+            </div>
         </div>
     )
+}
+const Buttons = (props: ButtonsPropsType) => {
+    if (props.id === 1) {
+        return (
+            <Button className={s.button} type="primary">Profile</Button>
+        )
+    } else if (props.id === 2) {
+        return (
+            <Button className={s.button} type="primary">Dialogs</Button>
+        )
+    } else if (props.id === 3) {
+        return (
+            <Button className={s.button} type="primary">News</Button>
+        )
+    } else if (props.id === 4) {
+        return (
+            <Button className={s.button} type="primary">Music</Button>
+        )
+    } else if (props.id === 5) {
+        return (
+            <Button className={s.button} type="primary">Settings</Button>
+        )
+    } else if (props.id === 6) {
+        return (
+            <Button className={s.button_friends} type="primary">Friends</Button>
+        )
+    } else {
+        return <div></div>
+    }
 }

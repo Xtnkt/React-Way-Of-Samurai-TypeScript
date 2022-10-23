@@ -1,29 +1,31 @@
-let reRenderTree = () => {
+import {v1} from "uuid";
 
-}
-export const subscribe = (observe: () => void) => {
-    reRenderTree = observe
-}
-
-export type PostDataType = {
-    id: number,
-    message: string,
-    likesCount: number,
-}
-
-type DialogsDataType = {
-    id: number,
-    name: string,
+export type StoreType = {
+    _state: RootStateType,
+    addPost: () => void,
+    updateNewPostText: (newText: string) => void,
+    addMessage: () => void,
+    updateNewMessageText: (newMessage: string) => void,
+    _callSubscriber: () => void,
+    subscribe: (observe: () => void) => void,
+    getState: () => RootStateType
 }
 
-type MessageDataType = {
-    id: number,
-    message: string,
+export type RootStateType = {
+    profilePage: ProfilePageType,
+    dialogsPage: DialogsPageType,
+    friendsPage: FriendsPageType
 }
 
 export type ProfilePageType = {
     postsData: PostDataType[],
     newPostText: string,
+}
+
+export type PostDataType = {
+    id: string,
+    message: string,
+    likesCount: number,
 }
 
 export type DialogsPageType = {
@@ -32,63 +34,104 @@ export type DialogsPageType = {
     newMessageText: string,
 }
 
-export type RootStateType = {
-    profilePage: ProfilePageType,
-    dialogsPage: DialogsPageType,
-
+type MessageDataType = {
+    id: string,
+    message: string,
 }
 
-export let state: RootStateType = {
-    profilePage: {
-        postsData: [
-            {id: 1, message: 'Hello', likesCount: 4},
-            {id: 2, message: 'It-kamasutra', likesCount: 8},
-        ],
-        newPostText: ''
+type DialogsDataType = {
+    id: string,
+    name: string,
+}
+
+type FriendsPageType = {
+    friendsData: FriendsDataType[]
+}
+
+export type FriendsDataType = {
+    id:string,
+    img: string,
+    name: string
+}
+
+export const store: StoreType = {
+    _state: {
+        profilePage: {
+            postsData: [
+                {id: v1(), message: 'Hello', likesCount: 4},
+                {id: v1(), message: 'It-kamasutra', likesCount: 8},
+            ],
+            newPostText: ''
+        },
+        dialogsPage: {
+            messagesData: [
+                {id: v1(), message: 'Hello'},
+                {id: v1(), message: 'How are y?'},
+                {id: v1(), message: 'It-kamasutra'},
+            ],
+            dialogsData: [
+                {id: v1(), name: 'Vlad'},
+                {id: v1(), name: 'Roma'},
+                {id: v1(), name: 'Dima'},
+                {id: v1(), name: 'Masha'},
+            ],
+            newMessageText: '',
+        },
+        friendsPage: {
+            friendsData: [
+                {
+                    id:v1(),
+                    img: "https://img1.liveinternet.ru/images/attach/c/8/102/784/102784519__obitatli_morea.png",
+                    name: "Sasha"
+                },
+                {
+                    id:v1(),
+                    img: "https://www.pngall.com/wp-content/uploads/5/Piranha-Fish-PNG-Picture.png",
+                    name: "Vlad"
+                },
+                {
+                    id:v1(),
+                    img: "https://i.pinimg.com/originals/da/69/6b/da696b031eee3d2822e94b44180ef52a.png",
+                    name: "Dimon"
+                },
+            ]
+        },
     },
-    dialogsPage: {
-        messagesData: [
-            {id: 1, message: 'Hello'},
-            {id: 2, message: 'How are y?'},
-            {id: 3, message: 'It-kamasutra'},
-        ],
-        dialogsData: [
-            {id: 1, name: 'Vlad'},
-            {id: 2, name: 'Roma'},
-            {id: 3, name: 'Dima'},
-            {id: 4, name: 'Masha'},
-        ],
-        newMessageText: ''
+    addPost() {
+        const newPost = {
+            id: v1(),
+            message: this._state.profilePage.newPostText,
+            likesCount: 0,
+        }
+        this._state.profilePage.postsData.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._callSubscriber()
+    },
+    updateNewPostText(newText: string) {
+        this._state.profilePage.newPostText = newText
+        this._callSubscriber()
+    },
+    addMessage() {
+        const newMessage = {
+            id: v1(),
+            message: this._state.dialogsPage.newMessageText,
+        }
+        this._state.dialogsPage.messagesData.push(newMessage)
+        this._state.dialogsPage.newMessageText = ''
+        this._callSubscriber()
+    },
+    updateNewMessageText(newMessage: string) {
+        this._state.dialogsPage.newMessageText = newMessage
+        this._callSubscriber()
+    },
+    _callSubscriber() {
+
+    },
+    subscribe(observe) {
+        this._callSubscriber = observe
+    },
+    getState() {
+        return this._state
     }
-}
 
-export const addPost = () => {
-    const newPost = {
-        id: 3,
-        message: state.profilePage.newPostText,
-        likesCount: 0,
-    }
-    state.profilePage.postsData.push(newPost)
-    state.profilePage.newPostText = ''
-    reRenderTree()
-}
-
-export const updateNewPostText = (newText: string) => {
-    state.profilePage.newPostText = newText
-    reRenderTree()
-}
-
-export const addMessage = () => {
-    const newMessage = {
-        id: 3,
-        message: state.dialogsPage.newMessageText,
-    }
-    state.dialogsPage.messagesData.push(newMessage)
-    state.dialogsPage.newMessageText = ''
-    reRenderTree()
-}
-
-export const updateNewMessageText = (newMessage: string) => {
-    state.dialogsPage.newMessageText = newMessage
-    reRenderTree()
 }

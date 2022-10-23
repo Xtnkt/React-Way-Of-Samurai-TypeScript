@@ -9,6 +9,7 @@ import {News} from "./Components/News/News";
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settings/Settings";
 import {RootStateType} from "./redux/state";
+import {Friends} from "./Components/Friends/Friends";
 
 
 type AppPropsType = {
@@ -23,7 +24,7 @@ export const App: React.FC<AppPropsType> = (props) => {
     return (
         <div className='app_wrapper'>
             <Header/>
-            <Navbar/>
+            <Navbar friendsData={props.state.friendsPage.friendsData}/>
             <div className='app_wrapper_content'>
                 <Route path="/profile" render={() =>
                     <Profile profilePage={props.state.profilePage}
@@ -40,6 +41,7 @@ export const App: React.FC<AppPropsType> = (props) => {
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
                 <Route path="/settings" render={() => <Settings/>}/>
+                <Route path="/friends" render={() => <Friends/>}/>
             </div>
         </div>
     )
