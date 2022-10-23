@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Counter/static/css/main.4d6256d2.css",
-    "main.js": "/Counter/static/js/main.554dd89f.js",
-    "index.html": "/Counter/index.html",
-    "main.4d6256d2.css.map": "/Counter/static/css/main.4d6256d2.css.map",
-    "main.554dd89f.js.map": "/Counter/static/js/main.554dd89f.js.map"
+    "main.css": "/React-Way-Of-Samurai-TypeScript/static/css/main.4d6256d2.css",
+    "main.js": "/React-Way-Of-Samurai-TypeScript/static/js/main.554dd89f.js",
+    "index.html": "/React-Way-Of-Samurai-TypeScript/index.html",
+    "main.4d6256d2.css.map": "/React-Way-Of-Samurai-TypeScript/static/css/main.4d6256d2.css.map",
+    "main.554dd89f.js.map": "/React-Way-Of-Samurai-TypeScript/static/js/main.554dd89f.js.map"
   },
   "entrypoints": [
     "static/css/main.4d6256d2.css",
