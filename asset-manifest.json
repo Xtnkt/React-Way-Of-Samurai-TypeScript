@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/React-Way-Of-Samurai-TypeScript/static/css/main.4d6256d2.css",
-    "main.js": "/React-Way-Of-Samurai-TypeScript/static/js/main.554dd89f.js",
+    "main.js": "/React-Way-Of-Samurai-TypeScript/static/js/main.0c8d7ced.js",
     "index.html": "/React-Way-Of-Samurai-TypeScript/index.html",
     "main.4d6256d2.css.map": "/React-Way-Of-Samurai-TypeScript/static/css/main.4d6256d2.css.map",
-    "main.554dd89f.js.map": "/React-Way-Of-Samurai-TypeScript/static/js/main.554dd89f.js.map"
+    "main.0c8d7ced.js.map": "/React-Way-Of-Samurai-TypeScript/static/js/main.0c8d7ced.js.map"
   },
   "entrypoints": [
     "static/css/main.4d6256d2.css",
-    "static/js/main.554dd89f.js"
+    "static/js/main.0c8d7ced.js"
   ]
 }
