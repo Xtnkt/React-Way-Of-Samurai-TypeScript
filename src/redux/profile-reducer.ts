@@ -1,31 +1,35 @@
 import {v1} from "uuid";
-import {ActionsTypes, ProfilePageType} from "./state";
+import {ActionsTypes, PostDataType} from "./store";
 
 export type ProfilePageActionType = AddPostAT | UpdateNewPostTextAT
-
-type AddPostAT = {
-    type: 'ADD-POST'
+type AddPostAT = ReturnType<typeof AddPostAC >
+type UpdateNewPostTextAT = ReturnType<typeof UpdateNewPostTextAC >
+type ProfilePageType = {
+    postsData: PostDataType[],
+    newPostText: string,
 }
 
-type UpdateNewPostTextAT = {
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: string,
-}
-
-export const AddPostAC = (): AddPostAT => {
+export const AddPostAC = () => {
     return {
         type: 'ADD-POST',
-    }
+    } as const
 }
 
-export const UpdateNewPostTextAC = (newText: string): UpdateNewPostTextAT => {
+export const UpdateNewPostTextAC = (newText: string) => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
         newText: newText,
-    }
+    }as const
 }
 
-export const profileReducer = (state: ProfilePageType, action: ActionsTypes): ProfilePageType => {
+let initialState:ProfilePageType = {
+        postsData: [
+            {id: v1(), message: 'Hello', likesCount: 4},
+            {id: v1(), message: 'It-kamasutra', likesCount: 8},
+        ],
+        newPostText: ''
+    }
+export const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST':
             const newPost = {

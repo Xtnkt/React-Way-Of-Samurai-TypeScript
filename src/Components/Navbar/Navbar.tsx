@@ -3,7 +3,7 @@ import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from 'antd';
 import 'antd/dist/antd.css';
-import {FriendsDataType} from "../../redux/state";
+import {FriendsDataType} from "../../redux/store";
 
 type ButtonsPropsType = {
     id: number;

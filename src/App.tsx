@@ -8,7 +8,7 @@ import {Route} from "react-router-dom";
 import {News} from "./Components/News/News";
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settings/Settings";
-import {ActionsTypes, RootStateType} from "./redux/state";
+import {ActionsTypes, RootStateType} from "./redux/store";
 import {Friends} from "./Components/Friends/Friends";
 
 

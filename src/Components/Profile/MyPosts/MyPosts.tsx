@@ -4,7 +4,7 @@ import {Post} from "./Post/Post";
 import {
     ActionsTypes,
     PostDataType,
-} from "../../../redux/state";
+} from "../../../redux/store";
 import {AddPostAC, UpdateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
