@@ -1,11 +1,11 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent} from "react";
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {
-    ActionsTypes, addPostActionCreator,
+    ActionsTypes,
     PostDataType,
-    updateNewPostTextActionCreator,
 } from "../../../redux/state";
+import {AddPostAC, UpdateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
 type MyPostsPropsType = {
@@ -21,14 +21,12 @@ export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
               message={p.message}
               likesCount={p.likesCount}/>
     )
-
     const addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.dispatch(AddPostAC())
     }
-
     const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let newText = e.currentTarget.value
-        props.dispatch(updateNewPostTextActionCreator(newText))
+        props.dispatch(UpdateNewPostTextAC(newText))
     }
 
     return (

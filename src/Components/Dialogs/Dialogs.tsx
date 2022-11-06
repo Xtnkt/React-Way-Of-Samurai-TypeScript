@@ -4,10 +4,9 @@ import {DialogsItems} from "./DialogsItems/DialogsItems";
 import {Message} from "./Message/Message";
 import {
     ActionsTypes,
-    addMessageActionCreator,
     DialogsPageType,
-    updateNewMessageTextActionCreator
 } from "../../redux/state";
+import {AddMessageAC, UpdateNewMessageTextAC} from "../../redux/dialogs-reducer";
 
 
 type DialogsPropsType = {
@@ -27,11 +26,11 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
                  message={m.message}/>
     )
     const addMessage = () => {
-        props.dispatch(addMessageActionCreator())
+        props.dispatch(AddMessageAC())
     }
     const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let newMessage = e.currentTarget.value
-        props.dispatch(updateNewMessageTextActionCreator(newMessage))
+        props.dispatch(UpdateNewMessageTextAC(newMessage))
     }
 
     return (
@@ -50,7 +49,6 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             <div>
                 <button onClick={addMessage}>add message</button>
             </div>
-
         </div>
     );
 };
