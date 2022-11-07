@@ -2,6 +2,7 @@ import {v1} from "uuid";
 import {ActionsTypes, PostDataType} from "./store";
 
 export type ProfilePageActionType = AddPostAT | UpdateNewPostTextAT
+
 type AddPostAT = ReturnType<typeof AddPostAC >
 type UpdateNewPostTextAT = ReturnType<typeof UpdateNewPostTextAC >
 type ProfilePageType = {

@@ -1,17 +1,21 @@
-import React from "react";
+import React, {FC} from "react";
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from 'antd';
 import 'antd/dist/antd.css';
-import {FriendsDataType} from "../../redux/store";
+import {FriendsDataType, StoreType} from "../../redux/store";
 
 type ButtonsPropsType = {
     id: number;
 }
+type NavbarPropsType = {
+    store:StoreType
+}
+export const Navbar:React.FC<NavbarPropsType> = (props) => {
 
-export const Navbar = (props: any) => {
+    const state = props.store.getState()
 
-    const friendsDataElements = props.friendsData.map((f: FriendsDataType) =>
+    const friendsDataElements = state.friendsPage.friendsData.map((f: FriendsDataType) =>
         <div key={f.id} className={s.item}>
             <img src={f.img}/>
             <b>{f.name}</b>
