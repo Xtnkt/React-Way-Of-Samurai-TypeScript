@@ -1,7 +1,7 @@
 import {v1} from "uuid";
 import {ProfilePageActionType, profileReducer} from "./profile-reducer";
 import {DialogsPageActionType, dialogsReducer} from "./dialogs-reducer";
-import {friendsReducer} from "./friends-reducer";
+import {friendsNavbarReducer} from "./friendsNavbar-reducer";
 
 export type StoreType = {
     _state: RootStateType,
@@ -109,7 +109,7 @@ export const store: StoreType = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-        this._state.friendsPage = friendsReducer(this._state.friendsPage, action)
+        this._state.friendsPage = friendsNavbarReducer(this._state.friendsPage, action)
         this._callSubscriber()
     }
 }

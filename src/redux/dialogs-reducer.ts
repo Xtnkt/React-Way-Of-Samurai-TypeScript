@@ -1,5 +1,4 @@
 import {v1} from "uuid";
-import {ActionsTypes} from "./store";
 
 export type DialogsPageActionType = AddMessageAT | UpdateNewMessageTextAT
 type AddMessageAT = {
@@ -9,7 +8,7 @@ type UpdateNewMessageTextAT = {
     type: 'UPDATE-NEW-MESSAGE-TEXT',
     newMessage: string,
 }
-type DialogsPageType = {
+export type DialogsPageType = {
     messagesData: MessageDataType[],
     dialogsData: DialogsDataType[],
     newMessageText: string,
@@ -50,7 +49,7 @@ let initialState:DialogsPageType = {
     newMessageText: '',
 }
 
-export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsTypes): DialogsPageType => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsPageActionType): DialogsPageType => {
     switch (action.type) {
         case 'ADD-MESSAGE':
             const newMessage = {

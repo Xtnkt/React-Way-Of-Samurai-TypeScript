@@ -1,35 +1,24 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./Components/Header/Header";
-import {Navbar} from "./Components/Navbar/Navbar";
 import {Profile} from "./Components/Profile/Profile";
 import {Route} from "react-router-dom";
 import {News} from "./Components/News/News";
 import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settings/Settings";
-import {ActionsTypes, StoreType} from "./redux/store";
 import {Friends} from "./Components/Friends/Friends";
 import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
-
-
-type AppPropsType = {
-    store: StoreType,
-    dispatch: (action: ActionsTypes) => void
-}
+import {NavbarContainer} from "./Components/Navbar/NavBarContainer";
 
 export const App = () => {
     return (
         <div className='app_wrapper'>
             <Header/>
-            {/*<Navbar store={props.store}/>*/}
-            <Navbar />
+            <NavbarContainer />
             <div className='app_wrapper_content'>
                 <Route path="/profile" render={() =>
                     <Profile />
                 }/>
-                {/*<Route path="/dialogs" render={() =>*/}
-                {/*    <DialogsContainer  store={props.store}/>*/}
-                {/*}/>*/}
                 <Route path="/dialogs" render={() =>
                     <DialogsContainer />
                 }/>

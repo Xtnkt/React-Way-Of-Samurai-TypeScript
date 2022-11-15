@@ -1,7 +1,6 @@
-import {ActionsTypes} from "./store";
 import {v1} from "uuid";
 
-type FriendsPageType = {
+export type FriendsNavbarType = {
     friendsData: FriendsDataType[]
 }
 
@@ -10,8 +9,11 @@ export type FriendsDataType = {
     img: string,
     name: string
 }
+type FriendsNavbarActionType = {
+    type : any
+}
 
-let initialState:FriendsPageType =  {
+let initialState:FriendsNavbarType =  {
         friendsData: [
             {
                 id: v1(),
@@ -31,6 +33,6 @@ let initialState:FriendsPageType =  {
         ]
     }
 
-export const friendsReducer = (state:FriendsPageType = initialState,action:ActionsTypes):FriendsPageType => {
+export const friendsNavbarReducer = (state:FriendsNavbarType = initialState, action:FriendsNavbarActionType):FriendsNavbarType => {
     return state
 }
