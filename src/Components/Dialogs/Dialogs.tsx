@@ -5,16 +5,16 @@ import {Message} from "./Message/Message";
 import {DialogsPageType} from "../../redux/store";
 
 type DialogsPropsType = {
-    updateNewMessageText:(newMessage:string) => void,
-    sendMessage:()=>void,
-    dialogsPage:DialogsPageType,
+    updateNewMessageText: (newMessage: string) => void,
+    sendMessage: () => void,
+    dialogsPage: DialogsPageType,
 }
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     const state = props.dialogsPage
 
-    const dialogsElements =state.dialogsData.map((d) =>
+    const dialogsElements = state.dialogsData.map((d) =>
         <DialogsItems key={d.id}
                       id={d.id}
                       name={d.name}/>
@@ -42,7 +42,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             <div>
                 <textarea value={props.dialogsPage.newMessageText}
                           onChange={onChangeTextareaHandler}
-                placeholder='Enter your message'/>
+                          placeholder='Enter your message'/>
             </div>
             <div>
                 <button onClick={addMessage}>add message</button>

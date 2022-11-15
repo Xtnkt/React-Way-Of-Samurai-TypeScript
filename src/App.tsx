@@ -17,17 +17,21 @@ type AppPropsType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export const App: React.FC<AppPropsType> = (props) => {
+export const App = () => {
     return (
         <div className='app_wrapper'>
             <Header/>
-            <Navbar store={props.store}/>
+            {/*<Navbar store={props.store}/>*/}
+            <Navbar />
             <div className='app_wrapper_content'>
                 <Route path="/profile" render={() =>
-                    <Profile store={props.store}/>
+                    <Profile />
                 }/>
+                {/*<Route path="/dialogs" render={() =>*/}
+                {/*    <DialogsContainer  store={props.store}/>*/}
+                {/*}/>*/}
                 <Route path="/dialogs" render={() =>
-                    <DialogsContainer  store={props.store}/>
+                    <DialogsContainer />
                 }/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
