@@ -6,7 +6,20 @@ import {BrowserRouter} from "react-router-dom";
 import {App} from "./App";
 import {Provider} from "react-redux";
 
-const reRenderTree = () => {
+// const reRenderTree = () => {
+//     ReactDOM.render(
+//         <BrowserRouter>
+//             <Provider store={store}>
+//                 <App/>
+//             </Provider>
+//         </BrowserRouter>,
+//         document.getElementById('root')
+//     );
+// }
+// reRenderTree();
+//
+// store.subscribe(() => reRenderTree())
+
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
@@ -15,7 +28,4 @@ const reRenderTree = () => {
         </BrowserRouter>,
         document.getElementById('root')
     );
-}
-reRenderTree();
 
-store.subscribe(() => reRenderTree())
