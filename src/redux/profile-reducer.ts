@@ -1,5 +1,4 @@
 import {v1} from "uuid";
-import {ActionsTypes} from "./store";
 
 export type ProfilePageActionType = AddPostAT | UpdateNewPostTextAT
 
@@ -35,7 +34,7 @@ let initialState:ProfilePageType = {
         ],
         newPostText: ''
     }
-export const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes): ProfilePageType => {
+export const profileReducer = (state: ProfilePageType = initialState, action: ProfilePageActionType): ProfilePageType => {
 
     switch (action.type) {
         case 'ADD-POST':{

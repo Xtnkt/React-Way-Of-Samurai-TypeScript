@@ -9,6 +9,7 @@ import {Settings} from "./Components/Settings/Settings";
 import {Friends} from "./Components/Friends/Friends";
 import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
 import {NavbarContainer} from "./Components/Navbar/NavBarContainer";
+import {UsersContainer} from "./Components/Users/UsersContainer";
 
 export const App = () => {
     return (
@@ -25,6 +26,9 @@ export const App = () => {
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
                 <Route path="/settings" render={() => <Settings/>}/>
+                <Route path="/users" render={() =>
+                    <UsersContainer/>
+                }/>
                 <Route path="/friends" render={() => <Friends/>}/>
             </div>
         </div>

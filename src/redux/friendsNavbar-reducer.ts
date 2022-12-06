@@ -9,7 +9,7 @@ export type FriendsDataType = {
     img: string,
     name: string
 }
-type FriendsNavbarActionType = {
+export type FriendsNavbarAT = {
     type : any
 }
 
@@ -33,6 +33,6 @@ let initialState:FriendsNavbarType =  {
         ]
     }
 
-export const friendsNavbarReducer = (state:FriendsNavbarType = initialState, action:FriendsNavbarActionType):FriendsNavbarType => {
+export const friendsNavbarReducer = (state:FriendsNavbarType = initialState, action:FriendsNavbarAT):FriendsNavbarType => {
     return state
 }
