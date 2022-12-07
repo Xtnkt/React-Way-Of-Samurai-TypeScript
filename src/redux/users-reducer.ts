@@ -9,29 +9,30 @@ export type UsersPageType = {
     users: UsersDataType[]
 }
 export type UsersDataType = {
-    id: string,
-    fullName: string,
-    photoUrl:string,
-    status: string,
-    followed: boolean,
-    location: {
-        city: string,
-        country: string
-    }
-}
-export const FollowAC = (userId: string) => {
+    "name": string,
+    "id": number,
+    "uniqueUrlName": string,
+    "photos": {
+        "small": string,
+        "large": string
+    },
+    "status": string,
+    "followed": boolean
+     }
+
+export const FollowAC = (userId: number) => {
     return {
         type: 'FOLLOW',
         userId: userId,
     } as const
 }
-export const UnFollowAC = (userId: string) => {
+export const UnFollowAC = (userId: number) => {
     return {
         type: 'UNFOLLOW',
         userId: userId,
     } as const
 }
-export const SetUsersAC = (users: any) => {
+export const SetUsersAC = (users: UsersDataType[]) => {
     return {
         type: 'SET-USERS',
         users: users,
@@ -39,23 +40,8 @@ export const SetUsersAC = (users: any) => {
 }
 
 let initialState: UsersPageType = {
-    users: [
-        {
-            id: v1(), photoUrl:'https://proprikol.ru/wp-content/uploads/2020/12/kartinki-rybki-dlya-detej-43-650x650.jpg',
-            fullName: 'Vlad', status: 'I am first here', followed: true,
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: v1(), photoUrl:'https://proprikol.ru/wp-content/uploads/2020/12/kartinki-rybki-dlya-detej-43-650x650.jpg',
-            fullName: 'Dima', status: 'I am second here', followed: false,
-            location: {city: 'Moscow', country: 'Russia'}
-        },
-        {
-            id: v1(), photoUrl:'https://proprikol.ru/wp-content/uploads/2020/12/kartinki-rybki-dlya-detej-43-650x650.jpg',
-            fullName: 'Masha', status: 'I am a girl', followed: false,
-            location: {city: 'Gomel', country: 'Belarus'}
-        },
-    ]
+    users: []
+
 }
 export const usersReducer = (state: UsersPageType = initialState, action: UsersPageAT): UsersPageType => {
 

@@ -46,6 +46,11 @@ export const Navbar:React.FC<FriendsPropsType> = (props) => {
                 </NavLink>
             </div>
             <div>
+                <NavLink to="/users">
+                    <Buttons id={7}/>
+                </NavLink>
+            </div>
+            <div>
                 <NavLink to="/friends">
                     <Buttons id={6}/>
                 </NavLink>
@@ -82,6 +87,10 @@ const Buttons = (props: ButtonsPropsType) => {
     } else if (props.id === 6) {
         return (
             <Button className={s.button_friends} type="primary">Friends</Button>
+        )
+    }else if (props.id === 7) {
+        return (
+            <Button className={s.button_friends} type="primary">Users</Button>
         )
     } else {
         return <div></div>
