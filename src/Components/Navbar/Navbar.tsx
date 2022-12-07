@@ -1,9 +1,9 @@
-import React, {FC} from "react";
+import React from "react";
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from 'antd';
 import 'antd/dist/antd.css';
-import {FriendsDataType, StoreType} from "../../redux/store";
+import {FriendsDataType} from "../../redux/store";
 import {FriendsPropsType} from "./NavBarContainer";
 
 type ButtonsPropsType = {
@@ -90,7 +90,7 @@ const Buttons = (props: ButtonsPropsType) => {
         )
     }else if (props.id === 7) {
         return (
-            <Button className={s.button_friends} type="primary">Users</Button>
+            <Button className={s.button} type="primary">Users</Button>
         )
     } else {
         return <div></div>
