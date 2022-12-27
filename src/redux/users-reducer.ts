@@ -1,18 +1,21 @@
 import {v1} from "uuid";
 
-export type UsersPageAT = FollowAT | UnFollowAT | SetUsersAT | SetCurrentPageAT | SetTotalUsersCountAT
+export type UsersPageAT = FollowAT | UnFollowAT | SetUsersAT
+    | SetCurrentPageAT | SetTotalUsersCountAT | ToggleIsFetchingAT
 
 type FollowAT = ReturnType<typeof FollowAC>
 type UnFollowAT = ReturnType<typeof UnFollowAC>
 type SetUsersAT = ReturnType<typeof SetUsersAC>
 type SetCurrentPageAT = ReturnType<typeof SetCurrentPageAC>
 type SetTotalUsersCountAT = ReturnType<typeof SetTotalUsersCountAC>
+type ToggleIsFetchingAT = ReturnType<typeof ToggleIsFetchingAC>
 
 export type UsersPageType = {
     users: UsersDataType[],
     pageSize: number,
     totalUsersCount: number,
-    currentPage: number
+    currentPage: number,
+    isFetching: boolean
 }
 export type UsersDataType = {
     "name": string,
@@ -56,12 +59,19 @@ export const SetTotalUsersCountAC = (totalUsersCount: number) => {
         totalUsersCount,
     } as const
 }
+export const ToggleIsFetchingAC = (isFetching: boolean) => {
+    return {
+        type: 'TOGGLE-IS-FETCHING',
+        isFetching,
+    } as const
+}
 
 let initialState: UsersPageType = {
     users: [],
     pageSize: 8,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false,
 }
 export const usersReducer = (state: UsersPageType = initialState, action: UsersPageAT): UsersPageType => {
 
@@ -86,6 +96,9 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersP
         }
         case 'SET-TOTAL-USERS-COUNT': {
             return {...state, totalUsersCount: action.totalUsersCount}
+        }
+        case 'TOGGLE-IS-FETCHING': {
+            return {...state, isFetching: action.isFetching}
         }
         default:
             return state
