@@ -1,7 +1,15 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
+import {ProfileDataType} from "../../../redux/profile-reducer";
+import {Preloader} from "../../common/Preloader/Preloader";
 
-export const ProfileInfo = (props: any) => {
+type ProfileInfoPropsType = {
+    profile: ProfileDataType | null
+}
+export const ProfileInfo = (props: ProfileInfoPropsType) => {
+    if(!props.profile){
+        return <Preloader/>
+    }
     return (
         <div>
             <div>
@@ -10,6 +18,9 @@ export const ProfileInfo = (props: any) => {
                      className={s.img}/>
             </div>
             <div className={s.descriptionBlock}>
+                <img src={props.profile?.photos.small}/>
+                <div>{props.profile?.lookingForAJobDescription}</div>
+                <div>{props.profile?.contacts.facebook}</div>
                 ava+description
             </div>
         </div>

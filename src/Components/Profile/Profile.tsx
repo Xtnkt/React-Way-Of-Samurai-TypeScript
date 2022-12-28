@@ -1,11 +1,12 @@
 import React from "react";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
+import {ProfilePagePropsType} from "./ProfileContainer";
 
-export const Profile = () => {
+export const Profile = (props:ProfilePagePropsType) => {
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}  />
             <MyPostsContainer />
         </div>
     )
