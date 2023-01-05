@@ -21,10 +21,10 @@ class ProfileContainer extends React.Component<ProfilePagePropsType> {
 
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        if(!userId) {
+        if (!userId) {
             userId = '27194'
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(response => {
                 this.props.setUserProfile(response.data);
             })
@@ -43,6 +43,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer)
+const WithUrlDataContainerComponent = withRouter(ProfileContainer)
+
 export default connect(mapStateToProps,
     {setUserProfile: SetUserProfileAC})(WithUrlDataContainerComponent);

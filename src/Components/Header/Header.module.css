@@ -2,18 +2,33 @@
     grid-area: h;
     background-color: rgba(6, 127, 247, 0.848);
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 15fr 2fr;
 }
+
 .header img {
-    display: block;
     margin: 5px 0px 0px 85px;
     width: 70px;
     border-radius: 20px;
-
 }
+
 .siteName {
     text-align: center;
     padding: 5px;
     font-size: 30px;
     color: white;
+}
+
+.loginBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.loginBlock a {
+    color: white;
+}
+
+.loginBlock a:hover{
+    color: brown;
 }
