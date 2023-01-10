@@ -68,7 +68,7 @@ export const ToggleIsFetchingAC = (isFetching: boolean) => {
 
 let initialState: UsersPageType = {
     users: [],
-    pageSize: 8,
+    pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,

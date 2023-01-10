@@ -1,10 +1,11 @@
 import {v1} from "uuid";
 
-export type ProfilePageActionType = AddPostAT | UpdateNewPostTextAT | SetUserProfileAT
+export type ProfilePageActionType = AddPostAT | UpdateNewPostTextAT | SetUserProfileAT | SetUserProfileIdAT
 
 type AddPostAT = ReturnType<typeof AddPostAC>
 type UpdateNewPostTextAT = ReturnType<typeof UpdateNewPostTextAC>
 type SetUserProfileAT = ReturnType<typeof SetUserProfileAC>
+type SetUserProfileIdAT = ReturnType<typeof SetUserProfileIdAC>
 export type ProfilePageType = {
     postsData: PostDataType[],
     newPostText: string,
@@ -14,7 +15,7 @@ export type ProfileDataType = {
     userId: number,
     lookingForAJob: boolean,
     lookingForAJobDescription: string | null,
-    fullName: string
+    fullName: string,
     contacts: {
         github: string | null,
         vk: string | null,
@@ -24,11 +25,12 @@ export type ProfileDataType = {
         website: string | null,
         youtube: string | null,
         mainLink: string | null,
-    }
+    },
     photos: {
         small: string,
         large: string
-    }
+    },
+    aboutMe?: string
 
 
 }
@@ -55,6 +57,13 @@ export const SetUserProfileAC = (profile: ProfileDataType | null) => {
     return {
         type: 'SET-USER-PROFILE',
         profile
+    } as const
+}
+
+export const SetUserProfileIdAC = (userId: number) => {
+    return {
+        type: 'SET-USER-PROFILE-ID',
+        userId
     } as const
 }
 
@@ -87,7 +96,6 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
         case "SET-USER-PROFILE": {
             return {...state, profile: action.profile}
         }
-
         default:
             return state
     }
