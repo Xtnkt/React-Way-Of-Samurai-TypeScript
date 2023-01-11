@@ -5,7 +5,6 @@ import {UsersDataType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/api";
 
-
 type UsersType = {
     totalUsersCount: number,
     pageSize: number,
@@ -46,7 +45,6 @@ export const Users = (props: UsersType) => {
                              <img src={u.photos.small !== null ? u.photos.small : userPhoto}
                                   className={styles.userPhoto} />
                         </NavLink>
-
                     </div>
                     <div>
                         {u.followed

@@ -1,7 +1,9 @@
-import {v1} from "uuid";
-
-export type UsersPageAT = FollowAT | UnFollowAT | SetUsersAT
-    | SetCurrentPageAT | SetTotalUsersCountAT | ToggleIsFetchingAT
+export type UsersPageAT = FollowAT
+    | UnFollowAT
+    | SetUsersAT
+    | SetCurrentPageAT
+    | SetTotalUsersCountAT
+    | ToggleIsFetchingAT
 
 type FollowAT = ReturnType<typeof FollowAC>
 type UnFollowAT = ReturnType<typeof UnFollowAC>

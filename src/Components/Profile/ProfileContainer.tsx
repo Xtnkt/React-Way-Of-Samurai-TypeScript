@@ -1,7 +1,6 @@
 import React from "react";
 import {Profile} from "./Profile";
-import {ProfileDataType, ProfilePageType, SetUserProfileAC} from "../../redux/profile-reducer";
-import axios from "axios";
+import {ProfileDataType, SetUserProfileAC} from "../../redux/profile-reducer";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {RouteComponentProps, withRouter} from "react-router-dom";
@@ -16,6 +15,7 @@ type MapStatePropsType = {
 type MapDispatchToProps = {
     setUserProfile: (profile: ProfileDataType | null) => void
 }
+
 export type ProfilePagePropsType = RouteComponentProps<PathParamsType> & MapStatePropsType & MapDispatchToProps
 
 class ProfileContainer extends React.Component<ProfilePagePropsType> {
