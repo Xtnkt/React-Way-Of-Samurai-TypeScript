@@ -13,6 +13,9 @@ type UsersType = {
     users: UsersDataType[],
     follow: (userId: number) => void,
     unFollow: (userId: number) => void,
+    toggleIsFollowingProgress: (isFetching: boolean, userId: number) => void,
+    isFetching: boolean,
+    followingProgress: number[]
 }
 
 export const Users = (props: UsersType) => {
@@ -43,25 +46,29 @@ export const Users = (props: UsersType) => {
                     <div>
                         <NavLink to={"/profile/" + u.id}>
                              <img src={u.photos.small !== null ? u.photos.small : userPhoto}
-                                  className={styles.userPhoto} />
+                                  className={styles.userPhoto}/>
                         </NavLink>
                     </div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => {
+                            ? <button className={styles.button} disabled={props.followingProgress.some((id) => id === u.id)} onClick={() => {
+                                props.toggleIsFollowingProgress(true, u.id)
                                 usersAPI.deleteFollow(u.id)
-                                    .then((data)=>{
+                                    .then((data) => {
                                         if (data.resultCode === 0) {
                                             props.unFollow(u.id)
                                         }
+                                        props.toggleIsFollowingProgress(false, u.id)
                                     })
                             }}>UNFOLLOW</button>
-                            : <button onClick={() => {
+                            : <button className={styles.button} disabled={props.followingProgress.some((id) => id === u.id)} onClick={() => {
+                                props.toggleIsFollowingProgress(true, u.id)
                                 usersAPI.postFollow(u.id)
-                                    .then((data)=>{
+                                    .then((data) => {
                                         if (data.resultCode === 0) {
                                             props.follow(u.id)
                                         }
+                                        props.toggleIsFollowingProgress(false, u.id)
                                     })
                             }}>FOLLOW</button>}
 

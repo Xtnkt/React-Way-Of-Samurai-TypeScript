@@ -4,6 +4,7 @@ export type UsersPageAT = FollowAT
     | SetCurrentPageAT
     | SetTotalUsersCountAT
     | ToggleIsFetchingAT
+    | ToggleIsFollowingProgressAT
 
 type FollowAT = ReturnType<typeof FollowAC>
 type UnFollowAT = ReturnType<typeof UnFollowAC>
@@ -11,13 +12,15 @@ type SetUsersAT = ReturnType<typeof SetUsersAC>
 type SetCurrentPageAT = ReturnType<typeof SetCurrentPageAC>
 type SetTotalUsersCountAT = ReturnType<typeof SetTotalUsersCountAC>
 type ToggleIsFetchingAT = ReturnType<typeof ToggleIsFetchingAC>
+type ToggleIsFollowingProgressAT = ReturnType<typeof ToggleIsFollowingProgressAC>
 
 export type UsersPageType = {
     users: UsersDataType[],
     pageSize: number,
     totalUsersCount: number,
     currentPage: number,
-    isFetching: boolean
+    isFetching: boolean,
+    followingProgress: number[]
 }
 export type UsersDataType = {
     "name": string,
@@ -67,6 +70,13 @@ export const ToggleIsFetchingAC = (isFetching: boolean) => {
         isFetching,
     } as const
 }
+export const ToggleIsFollowingProgressAC = (isFetching: boolean, userId: number) => {
+    return {
+        type: 'TOGGLE-IS-FOLLOWING-PROGRESS',
+        isFetching,
+        userId
+    } as const
+}
 
 let initialState: UsersPageType = {
     users: [],
@@ -74,6 +84,7 @@ let initialState: UsersPageType = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
+    followingProgress: []
 }
 export const usersReducer = (state: UsersPageType = initialState, action: UsersPageAT): UsersPageType => {
 
@@ -101,6 +112,14 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersP
         }
         case 'TOGGLE-IS-FETCHING': {
             return {...state, isFetching: action.isFetching}
+        }
+        case 'TOGGLE-IS-FOLLOWING-PROGRESS': {
+            return {
+                ...state,
+                followingProgress: action.isFetching
+                    ? [...state.followingProgress, action.userId]
+                    : state.followingProgress.filter((id) => id !== action.userId)
+            }
         }
         default:
             return state

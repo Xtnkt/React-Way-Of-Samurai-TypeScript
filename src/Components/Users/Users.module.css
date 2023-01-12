@@ -5,3 +5,10 @@
 .selectedPage{
     font-weight: bold;
 }
+.button{
+    background: #55c5e9;
+
+}
+.button:disabled{
+    background: red;
+}
