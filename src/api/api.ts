@@ -1,6 +1,5 @@
 import axios from "axios";
 import {UsersDataType} from "../redux/users-reducer";
-import {AuthType} from "../redux/auth-reducer";
 import {ProfileDataType} from "../redux/profile-reducer";
 
 const instance = axios.create({

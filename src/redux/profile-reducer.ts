@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {Dispatch} from "redux";
+import {profileAPI} from "../api/api";
 
 export type ProfilePageActionType = AddPostAT | UpdateNewPostTextAT | SetUserProfileAT | SetUserProfileIdAT
 
@@ -31,8 +33,6 @@ export type ProfileDataType = {
         large: string
     },
     aboutMe?: string
-
-
 }
 export type PostDataType = {
     id: string,
@@ -40,34 +40,8 @@ export type PostDataType = {
     likesCount: number,
 }
 
-export const AddPostAC = () => {
-    return {
-        type: 'ADD-POST',
-    } as const
-}
 
-export const UpdateNewPostTextAC = (newText: string) => {
-    return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        newText: newText,
-    } as const
-}
-
-export const SetUserProfileAC = (profile: ProfileDataType | null) => {
-    return {
-        type: 'SET-USER-PROFILE',
-        profile
-    } as const
-}
-
-export const SetUserProfileIdAC = (userId: number) => {
-    return {
-        type: 'SET-USER-PROFILE-ID',
-        userId
-    } as const
-}
-
-let initialState: ProfilePageType = {
+const initialState: ProfilePageType = {
     postsData: [
         {id: v1(), message: 'Hello', likesCount: 4},
         {id: v1(), message: 'It-kamasutra', likesCount: 8},
@@ -99,4 +73,37 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
         default:
             return state
     }
+}
+
+export const AddPostAC = () => {
+    return {
+        type: 'ADD-POST',
+    } as const
+}
+export const UpdateNewPostTextAC = (newText: string) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: newText,
+    } as const
+}
+export const SetUserProfileAC = (profile: ProfileDataType | null) => {
+    return {
+        type: 'SET-USER-PROFILE',
+        profile
+    } as const
+}
+export const SetUserProfileIdAC = (userId: number) => {
+    return {
+        type: 'SET-USER-PROFILE-ID',
+        userId
+    } as const
+}
+
+export const getUserProfileTC = (id: string) => (dispatch: Dispatch) => {
+    let userId = id
+    if (!userId) {
+        userId = '27194'
+    }
+    profileAPI.getUserProfile(userId)
+        .then((data) => dispatch(SetUserProfileAC(data)))
 }
