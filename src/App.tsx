@@ -10,6 +10,7 @@ import {NavbarContainer} from "./Components/Navbar/NavBarContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
+import {Login} from "./Components/Login/Login";
 
 
 export const App = () => {
@@ -31,6 +32,7 @@ export const App = () => {
                     <UsersContainer/>
                 }/>
                 <Route path="/friends" render={() => <Friends/>}/>
+                <Route path="/login" render={() => <Login/>}/>
             </div>
         </div>
     )

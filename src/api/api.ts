@@ -45,17 +45,15 @@ export const usersAPI = {
             .then((res) => res.data)
     }
 }
-
 export const authAPI = {
     getAuth() {
         return instance.get<GetAuthDataType>('auth/me')
             .then((res) => res.data)
     }
 }
-
 export const profileAPI = {
     getUserProfile(userId: string) {
-        return instance.get<ProfileDataType>(`/profile/${userId}`)
+        return instance.get<ProfileDataType>(`profile/${userId}`)
             .then((res) => res.data)
     }
 }
