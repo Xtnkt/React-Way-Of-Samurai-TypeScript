@@ -10,6 +10,8 @@ import {
 } from "../../redux/users-reducer";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
+import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
+import {Dialogs} from "../Dialogs/Dialogs";
 
 export type UsersContainerPropsType = MapStatePropsType & MapDispatchToProps
 
@@ -75,6 +77,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
         followingProgress: state.usersPage.followingProgress
     }
 }
+const WithAuthRedirectComponent = WithAuthRedirect(UsersContainer)
 
 export default connect(mapStateToProps, {
     follow: FollowAC,
@@ -85,5 +88,5 @@ export default connect(mapStateToProps, {
     getUsers: getUsersTC,
     unFollowTC: unFollowTC,
     followTC: followTC
-})(UsersContainer)
+})(WithAuthRedirectComponent)
 
