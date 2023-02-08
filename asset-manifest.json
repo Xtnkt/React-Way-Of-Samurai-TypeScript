@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/React-Way-Of-Samurai-TypeScript/static/css/main.bb1dabdf.css",
-    "main.js": "/React-Way-Of-Samurai-TypeScript/static/js/main.5bb5956e.js",
+    "main.js": "/React-Way-Of-Samurai-TypeScript/static/js/main.5f2c65d0.js",
     "static/media/user.png": "/React-Way-Of-Samurai-TypeScript/static/media/user.72e277617845ef2573a4.png",
     "static/media/1476 (1).gif": "/React-Way-Of-Samurai-TypeScript/static/media/1476 (1).c42ba7a5e7359165df51.gif",
     "index.html": "/React-Way-Of-Samurai-TypeScript/index.html",
     "main.bb1dabdf.css.map": "/React-Way-Of-Samurai-TypeScript/static/css/main.bb1dabdf.css.map",
-    "main.5bb5956e.js.map": "/React-Way-Of-Samurai-TypeScript/static/js/main.5bb5956e.js.map"
+    "main.5f2c65d0.js.map": "/React-Way-Of-Samurai-TypeScript/static/js/main.5f2c65d0.js.map"
   },
   "entrypoints": [
     "static/css/main.bb1dabdf.css",
-    "static/js/main.5bb5956e.js"
+    "static/js/main.5f2c65d0.js"
   ]
 }
