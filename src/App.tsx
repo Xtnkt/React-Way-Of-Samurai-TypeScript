@@ -17,13 +17,13 @@ export const App = () => {
     return (
         <div className='app_wrapper'>
             <HeaderContainer/>
-            <NavbarContainer />
+            <NavbarContainer/>
             <div className='app_wrapper_content'>
                 <Route path="/profile/:userId?" render={() =>
-                    <ProfileContainer />
+                    <ProfileContainer/>
                 }/>
                 <Route path="/dialogs" render={() =>
-                    <DialogsContainer />
+                    <DialogsContainer/>
                 }/>
                 <Route path="/news" render={() => <News/>}/>
                 <Route path="/music" render={() => <Music/>}/>
