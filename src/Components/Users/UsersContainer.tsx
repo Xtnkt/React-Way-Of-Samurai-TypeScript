@@ -11,7 +11,6 @@ import {
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
-import {Dialogs} from "../Dialogs/Dialogs";
 import {compose} from "redux";
 
 export type UsersContainerPropsType = MapStatePropsType & MapDispatchToProps

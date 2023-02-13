@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
-import {followTC, unFollowTC, UsersDataType} from "../../redux/users-reducer";
+import {UsersDataType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 type UsersType = {
     totalUsersCount: number,
@@ -72,7 +71,7 @@ export const Users = (props: UsersType) => {
                 <span>
                     <span>
                         <div>{u.name}</div>
-                        <div>{u.status}</div>
+                        status:<div>{u.status}</div>
                     </span>
                     <span>
                         <div>{'u.location.country'}</div>

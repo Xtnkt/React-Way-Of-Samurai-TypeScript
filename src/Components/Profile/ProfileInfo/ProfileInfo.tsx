@@ -5,22 +5,19 @@ import {Preloader} from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
-    profile: ProfileDataType | null
+    profile: ProfileDataType | null,
+    status: string,
+    updateStatus: (newStatus: string) => void
 }
 export const ProfileInfo = (props: ProfileInfoPropsType) => {
-    if(!props.profile){
+    if (!props.profile) {
         return <Preloader/>
     }
     return (
         <div>
-            <div>
-                {/*<img src='https://pbs.twimg.com/profile_banners/958008249068019713/1623959964/1500x500'*/}
-                {/*     alt='Ocean'*/}
-                {/*     className={s.img}/>*/}
-            </div>
             <div className={s.descriptionBlock}>
                 <img src={props.profile?.photos.small}/>
-                <ProfileStatus/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <div>{props.profile?.lookingForAJobDescription}</div>
                 <div>{props.profile?.aboutMe}</div>
                 <div>{props.profile?.fullName}</div>
