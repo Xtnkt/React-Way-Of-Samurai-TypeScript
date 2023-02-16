@@ -112,15 +112,11 @@ export const SetStatusAC = (status: string) => {
     } as const
 }
 
-export const getUserProfileTC = (id: string) => (dispatch: Dispatch) => {
-    let userId = id
-    if (!userId) {
-        userId = '26598'
-    }
-    profileAPI.getUserProfile(userId)
+export const getUserProfileTC = (id: number) => (dispatch: Dispatch) => {
+    profileAPI.getUserProfile(id)
         .then((data) => dispatch(SetUserProfileAC(data)))
 }
-export const getStatusTC = (userId: string) => (dispatch: Dispatch) => {
+export const getStatusTC = (userId: number) => (dispatch: Dispatch) => {
     profileAPI.getStatus(userId)
         .then((data) => dispatch(SetStatusAC(data)))
 }

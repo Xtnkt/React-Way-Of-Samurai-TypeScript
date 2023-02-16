@@ -30,6 +30,10 @@ type GetAuthDataType = {
     resultCode: number,
     messages: string[]
 }
+type GetStatusDataType = {
+    Media_type: string
+    Type: any
+}
 
 export const usersAPI = {
     getUsers(currentPage: number, pageSize: number) {
@@ -52,11 +56,11 @@ export const authAPI = {
     }
 }
 export const profileAPI = {
-    getUserProfile(userId: string) {
+    getUserProfile(userId: number) {
         return instance.get<ProfileDataType>(`profile/${userId}`)
             .then((res) => res.data)
     },
-    getStatus(userId: string) {
+    getStatus(userId: number) {
         return instance.get(`profile/status/${userId}`)
             .then((res) => res.data)
     },
