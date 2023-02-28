@@ -2,11 +2,10 @@ import {v1} from "uuid";
 import {Dispatch} from "redux";
 import {profileAPI} from "../api/api";
 
-export type ProfilePageActionType = AddPostAT | UpdateNewPostTextAT
+export type ProfilePageActionType = AddPostAT
     | SetUserProfileAT | SetUserProfileIdAT | SetStatusAT
 
 type AddPostAT = ReturnType<typeof AddPostAC>
-type UpdateNewPostTextAT = ReturnType<typeof UpdateNewPostTextAC>
 type SetUserProfileAT = ReturnType<typeof SetUserProfileAC>
 type SetUserProfileIdAT = ReturnType<typeof SetUserProfileIdAC>
 type SetStatusAT = ReturnType<typeof SetStatusAC>
@@ -59,17 +58,13 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
         case 'ADD-POST': {
             const newPost = {
                 id: v1(),
-                message: state.newPostText,
+                message: action.newPost,
                 likesCount: 0,
             }
             return {
                 ...state,
                 postsData: [...state.postsData, newPost],
-                newPostText: ""
             }
-        }
-        case 'UPDATE-NEW-POST-TEXT': {
-            return {...state, newPostText: action.newText}
         }
         case "SET-USER-PROFILE": {
             return {...state, profile: action.profile}
@@ -82,15 +77,10 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
     }
 }
 
-export const AddPostAC = () => {
+export const AddPostAC = (newPost: string) => {
     return {
         type: 'ADD-POST',
-    } as const
-}
-export const UpdateNewPostTextAC = (newText: string) => {
-    return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        newText: newText,
+        newPost
     } as const
 }
 export const SetUserProfileAC = (profile: ProfileDataType | null) => {

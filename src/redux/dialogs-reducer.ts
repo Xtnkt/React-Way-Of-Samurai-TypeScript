@@ -1,12 +1,10 @@
 import {v1} from "uuid";
 
-export type DialogsPageActionType = AddMessageAT | UpdateNewMessageTextAT
+export type DialogsPageActionType = AddMessageAT
+
 type AddMessageAT = {
     type: 'ADD-MESSAGE',
-}
-type UpdateNewMessageTextAT = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT',
-    newMessage: string,
+    newMessageText: string
 }
 export type DialogsPageType = {
     messagesData: MessageDataType[],
@@ -22,19 +20,14 @@ type DialogsDataType = {
     name: string,
 }
 
-export const AddMessageAC = (): AddMessageAT => {
+export const AddMessageAC = (newMessageText: string): AddMessageAT => {
     return {
         type: 'ADD-MESSAGE',
-    }
-}
-export const UpdateNewMessageTextAC = (newMessage: string): UpdateNewMessageTextAT => {
-    return {
-        type: 'UPDATE-NEW-MESSAGE-TEXT',
-        newMessage: newMessage,
+        newMessageText
     }
 }
 
-let initialState:DialogsPageType = {
+const initialState: DialogsPageType = {
     messagesData: [
         {id: v1(), message: 'Hello'},
         {id: v1(), message: 'How are y?'},
@@ -51,21 +44,16 @@ let initialState:DialogsPageType = {
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsPageActionType): DialogsPageType => {
     switch (action.type) {
-        case 'ADD-MESSAGE':{
+        case 'ADD-MESSAGE': {
             const newMessage = {
                 id: v1(),
-                message: state.newMessageText,
+                message: action.newMessageText,
             }
             return {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
-                newMessageText: ''
             }
         }
-        case 'UPDATE-NEW-MESSAGE-TEXT':{
-            return {...state, newMessageText:action.newMessage}
-        }
-
         default:
             return state
     }

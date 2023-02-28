@@ -1,9 +1,9 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from './Dialogs.module.css'
 import {DialogsPropsType} from './DialogsContainer';
 import {DialogsItems} from "./DialogsItems/DialogsItems";
 import {Message} from "./Message/Message";
-import {Redirect} from "react-router-dom";
+import {AddMessageFormRedux, DialogsFormDataType} from "./DialogsAddMessageForm";
 
 export const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
@@ -18,12 +18,8 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
         <Message key={m.id}
                  message={m.message}/>
     )
-    const addMessage = () => {
-        props.sendMessage()
-    }
-    const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let newMessage = e.currentTarget.value
-        props.updateNewMessageText(newMessage)
+    const addNewMessage = (formData: DialogsFormDataType) => {
+        props.sendMessage(formData.newMessageText)
     }
 
     return (
@@ -34,14 +30,7 @@ export const Dialogs: React.FC<DialogsPropsType> = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <div>
-                <textarea value={props.dialogsPage.newMessageText}
-                          onChange={onChangeTextareaHandler}
-                          placeholder='Enter your message'/>
-            </div>
-            <div>
-                <button onClick={addMessage}>add message</button>
-            </div>
+            <AddMessageFormRedux onSubmit={addNewMessage}/>
         </div>
     );
 };
