@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/React-Way-Of-Samurai-TypeScript/static/css/main.2139a048.css",
-    "main.js": "/React-Way-Of-Samurai-TypeScript/static/js/main.6ffb79b4.js",
+    "main.css": "/React-Way-Of-Samurai-TypeScript/static/css/main.8ed2bf3e.css",
+    "main.js": "/React-Way-Of-Samurai-TypeScript/static/js/main.3499551d.js",
     "static/media/user.png": "/React-Way-Of-Samurai-TypeScript/static/media/user.72e277617845ef2573a4.png",
     "static/media/1476 (1).gif": "/React-Way-Of-Samurai-TypeScript/static/media/1476 (1).c42ba7a5e7359165df51.gif",
     "index.html": "/React-Way-Of-Samurai-TypeScript/index.html",
-    "main.2139a048.css.map": "/React-Way-Of-Samurai-TypeScript/static/css/main.2139a048.css.map",
-    "main.6ffb79b4.js.map": "/React-Way-Of-Samurai-TypeScript/static/js/main.6ffb79b4.js.map"
+    "main.8ed2bf3e.css.map": "/React-Way-Of-Samurai-TypeScript/static/css/main.8ed2bf3e.css.map",
+    "main.3499551d.js.map": "/React-Way-Of-Samurai-TypeScript/static/js/main.3499551d.js.map"
   },
   "entrypoints": [
-    "static/css/main.2139a048.css",
-    "static/js/main.6ffb79b4.js"
+    "static/css/main.8ed2bf3e.css",
+    "static/js/main.3499551d.js"
   ]
 }
