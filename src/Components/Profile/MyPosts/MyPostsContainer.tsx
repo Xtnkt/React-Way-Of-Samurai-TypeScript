@@ -5,8 +5,6 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../../redux/redux-store";
 import {Dispatch} from "redux";
 
-export type MyPostsPropsType = MapStateToProps & MapDispatchToProps
-
 type MapStateToProps = {
     postsData: PostDataType[],
     newPostText: string,
@@ -14,6 +12,7 @@ type MapStateToProps = {
 type MapDispatchToProps = {
     addPost: (newPost: string) => void
 }
+export type MyPostsPropsType = MapStateToProps & MapDispatchToProps
 
 const mapStateToProps = (state: AppStateType): MapStateToProps => {
     return {

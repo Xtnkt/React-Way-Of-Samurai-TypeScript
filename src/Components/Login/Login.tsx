@@ -1,16 +1,36 @@
 import React from "react";
-import {reduxForm} from "redux-form";
-import {LoginForm} from "./LoginForm";
-
+import {LoginReduxForm} from "./LoginForm";
+import {connect} from "react-redux";
+import {loginTC} from "../../redux/auth-reducer";
+import {Redirect} from "react-router-dom";
+import {AppStateType} from "../../redux/redux-store";
 
 export type FormDataType = {
-    login: string,
+    email: string,
     password: string,
     rememberMe: boolean
 }
-export const Login = (props: any) => {
+type MapStateToPropsType = {
+    isAuth: boolean
+}
+type MapDispatchToPropsType = {
+    login: (email: string, password: string, rememberMe: boolean) => void,
+}
+type LoginPropsType = MapStateToPropsType & MapDispatchToPropsType
+
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export const Login: React.FC<LoginPropsType> = (props) => {
+
     const onSubmit = (formData: FormDataType) => {
-        console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+    if (props.isAuth) {
+        return <Redirect to={'/profile'}/>
     }
     return (
         <div>
@@ -19,4 +39,4 @@ export const Login = (props: any) => {
         </div>
     )
 }
-const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
+export default connect(mapStateToProps, {login: loginTC})(Login)

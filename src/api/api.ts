@@ -34,6 +34,18 @@ type GetStatusDataType = {
     Media_type: string
     Type: any
 }
+type LoginDataType = {
+    resultCode: number,
+    messages: string[],
+    data:{
+        userId:number
+    }
+}
+type LogoutDataType = {
+    resultCode: number,
+    messages: string[],
+    data:{}
+}
 
 export const usersAPI = {
     getUsers(currentPage: number, pageSize: number) {
@@ -52,6 +64,14 @@ export const usersAPI = {
 export const authAPI = {
     getAuth() {
         return instance.get<GetAuthDataType>('auth/me')
+            .then((res) => res.data)
+    },
+    login(email: string, password: string, rememberMe = false) {
+        return instance.post<LoginDataType>(`auth/login`, {email, password, rememberMe})
+            .then((res) => res.data)
+    },
+    logout() {
+        return instance.delete<LogoutDataType>(`auth/login`)
             .then((res) => res.data)
     }
 }

@@ -11,7 +11,6 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
-import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type PathParamsType = {
     userId: any,
