@@ -16,7 +16,7 @@ export type AuthType = {
     id: number | null,
     email: string | null,
     login: string | null,
-    isAuth: boolean,
+    isAuth: boolean | null,
 }
 const initialState: AuthType = {
     id: null,
@@ -30,7 +30,7 @@ export const authReducer = (state: AuthType = initialState, action: SetUserDataA
         case 'SET-USER-DATA': {
             return {
                 ...state,
-                ...action.payload,
+                ...action.payload
             }
         }
         default:
@@ -46,7 +46,7 @@ export const SetAuthUserDataAC = (id: number | null, email: string | null, login
 }
 
 export const getAuthTC = () => (dispatch: Dispatch) => {
-    authAPI.getAuth()
+    return authAPI.getAuth()
         .then((data) => {
             if (data.resultCode === 0) {
                 const {id, email, login} = data.data

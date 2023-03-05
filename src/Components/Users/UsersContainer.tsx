@@ -89,5 +89,5 @@ export default compose<React.ComponentType>(
         unFollowTC: unFollowTC,
         followTC: followTC
     }),
-    WithAuthRedirect
+    //WithAuthRedirect
 )(UsersContainer)

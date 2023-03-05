@@ -11,7 +11,7 @@ export type FormDataType = {
     rememberMe: boolean
 }
 type MapStateToPropsType = {
-    isAuth: boolean
+    isAuth: boolean | null
 }
 type MapDispatchToPropsType = {
     login: (email: string, password: string, rememberMe: boolean) => void,
