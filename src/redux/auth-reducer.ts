@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {TypedDispatch} from "./redux-store";
+import {stopSubmit} from "redux-form";
 
 type SetUserDataAT = {
     type: 'SET-USER-DATA',
@@ -59,6 +60,8 @@ export const loginTC = (email: string, password: string, rememberMe: boolean) =>
         .then((data) => {
             if (data.resultCode === 0) {
                 dispatch(getAuthTC())
+            } else {
+                dispatch(stopSubmit('login', {_error: data.messages}))
             }
         })
 }
