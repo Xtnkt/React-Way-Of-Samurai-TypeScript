@@ -10,8 +10,13 @@ import {
 } from "../../redux/users-reducer";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
-import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPageSelector, getFollowingProgressSelector, getIsFetchingSelector,
+    getPageSizeSelector,
+    getTotalUsersCountSelector,
+    getUsersSelector, getUsersSuperSelector
+} from "../../redux/selectors/users-selector";
 
 export type UsersContainerPropsType = MapStatePropsType & MapDispatchToProps
 
@@ -69,12 +74,12 @@ class UsersContainer extends React.Component<UsersContainerPropsType> {
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingProgress: state.usersPage.followingProgress
+        users: getUsersSuperSelector(state),
+        pageSize: getPageSizeSelector(state),
+        totalUsersCount: getTotalUsersCountSelector(state),
+        currentPage: getCurrentPageSelector(state),
+        isFetching: getIsFetchingSelector(state),
+        followingProgress: getFollowingProgressSelector(state)
     }
 }
 
@@ -89,5 +94,4 @@ export default compose<React.ComponentType>(
         unFollowTC: unFollowTC,
         followTC: followTC
     }),
-    //WithAuthRedirect
 )(UsersContainer)

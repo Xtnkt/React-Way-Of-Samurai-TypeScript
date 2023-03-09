@@ -22,7 +22,7 @@ const initialState: AuthType = {
     id: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: null
 }
 
 export const authReducer = (state: AuthType = initialState, action: SetUserDataAT): AuthType => {

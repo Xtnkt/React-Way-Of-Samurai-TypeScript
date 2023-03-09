@@ -18,7 +18,7 @@ import {setAuthorizedTC} from "./redux/app-reducer";
 import {Preloader} from "./Components/common/Preloader/Preloader";
 
 type MapStateToPropsType = {
-    authorized: boolean
+    isAuthorized: boolean
 }
 type MapDispatchToPropsType = {
     authorized: () => void
@@ -27,7 +27,7 @@ type AppPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        authorized: state.app.authorized
+        isAuthorized: state.app.authorized
     }
 }
 
@@ -38,7 +38,7 @@ class App extends React.Component<AppPropsType> {
     }
 
     render() {
-        if (!this.props.authorized) {
+        if (!this.props.isAuthorized) {
             return <Preloader/>
         }
         return (
